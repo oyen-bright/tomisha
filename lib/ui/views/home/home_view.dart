@@ -10,6 +10,7 @@ import 'package:tomisha/ui/views/home/compoents/item_three.dart';
 import 'package:tomisha/ui/views/home/compoents/item_two.dart';
 
 import 'compoents/header_content.dart';
+import 'compoents/header_text.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -61,7 +62,10 @@ class _HomeViewState extends State<HomeView>
               ],
             ),
           ),
-          AppAppBar(controller: controller)
+          AppAppBar(controller: controller),
+          if (getDeviceType(MediaQuery.of(context).size) !=
+              DeviceScreenType.desktop)
+            _buildMobileRegisterButton(context)
         ],
       ),
     );
@@ -72,12 +76,7 @@ class _HomeViewState extends State<HomeView>
       crossAxisAlignment: CrossAxisAlignment.stretch,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text(
-          "Drei einfache Schritte\nzu deinem neuen Job",
-          textAlign: TextAlign.center,
-          style: const TextStyle()
-              .copyWith(fontSize: 40, color: AppColors.slateColor),
-        ),
+        HeaderText(controller: _tabController),
         const SizedBox(
           height: 98,
         ),
@@ -134,4 +133,51 @@ class _HomeViewState extends State<HomeView>
           tabNames: const ["Arbeitnehmer", "Arbeitgeber", "Temporärbüro"]),
     );
   }
+}
+
+Positioned _buildMobileRegisterButton(BuildContext context) {
+  return Positioned(
+      left: 0,
+      right: 0,
+      bottom: 0,
+      child: Container(
+          height: 128,
+          width: double.infinity,
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+            borderRadius: const BorderRadius.vertical(top: Radius.circular(12)),
+            boxShadow: const [
+              BoxShadow(
+                color: AppColors.transparentBlack,
+                offset: Offset(3, -3),
+                blurRadius: 6,
+              ),
+            ],
+            color: Theme.of(context).scaffoldBackgroundColor,
+          ),
+          child: Container(
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+                gradient: const LinearGradient(
+                  colors: [
+                    Color(0xFF319795),
+                    Color(0xFF3182CE),
+                  ],
+                  begin: Alignment.centerLeft,
+                  end: Alignment.centerRight,
+                ),
+                borderRadius: BorderRadius.circular(12)),
+            width: 319,
+            height: 40,
+            child: Text(
+              "Kostenlos Registrieren",
+              textAlign: TextAlign.left,
+              style: const TextStyle().copyWith(
+                // fontWeight: FontWeight.w600,
+                color: Colors.white,
+
+                fontSize: 14,
+              ),
+            ),
+          )));
 }

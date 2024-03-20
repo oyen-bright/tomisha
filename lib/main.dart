@@ -22,6 +22,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Tomisha Demo',
       theme: ThemeData(
         textTheme: GoogleFonts.latoTextTheme(),

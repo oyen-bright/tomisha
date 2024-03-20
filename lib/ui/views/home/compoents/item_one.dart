@@ -23,7 +23,7 @@ class _ItemOneState extends State<ItemOne> {
   int index = 0;
 
   final List<(String, String)> data = [
-    ("Erstellen dein Unternehmensprofil", AppImages.ar1BG),
+    ("Erstellen dein Lebenslauf", AppImages.ar1BG),
     ("Erstellen dein Unternehmensprofil", AppImages.ar1BG),
     ("Erstellen dein Unternehmensprofil", AppImages.ar1BG)
   ];

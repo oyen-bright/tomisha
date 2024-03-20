@@ -14,8 +14,8 @@ class Header extends StatelessWidget {
       mobile: (BuildContext context) {
         return Stack(
           children: [
-            _buildMobileContainer(),
-            _buildMobileRegisterButton(context)
+            _buildMobileContainer(context),
+            // _buildMobileRegisterButton(context)
           ],
         );
       },
@@ -100,16 +100,14 @@ class Header extends StatelessWidget {
     );
   }
 
-  WavyContainer _buildMobileContainer() {
+  WavyContainer _buildMobileContainer(context) {
     return WavyContainer(
       color: Colors.transparent,
-      height: 700,
+      height: MediaQuery.of(context).size.height,
       child: Center(
           child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const SizedBox(
-            height: 20,
-          ),
           const Text(
             "Deine Job\nwebsite",
             textAlign: TextAlign.center,
@@ -119,7 +117,7 @@ class Header extends StatelessWidget {
             ),
           ),
           const SizedBox(
-            height: 20,
+            height: 40,
           ),
           SvgPicture.asset(AppImages.homeBG),
         ],

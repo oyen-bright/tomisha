@@ -78,7 +78,9 @@ class _AppAppBarState extends State<AppAppBar> {
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
-        if (showButtons) ...{
+        if (showButtons &&
+            getDeviceType(MediaQuery.of(context).size) ==
+                DeviceScreenType.desktop) ...{
           Expanded(
               child: SingleChildScrollView(
             reverse: true,
